@@ -2,6 +2,7 @@ import express, { Application } from 'express';
 import cors from 'cors';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
 import { UserRoutes } from './app/modules/user/user.route';
+import { AcademicSemesterRoutes } from './app/modules/academicSemester/academicSemester.route';
 // import ApiError from './errors/ApiError'
 
 // import usersService from './app/modules/users/users.service'
@@ -18,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 // Appplication routes
 // app.use('api/v1/users/', )
 app.use('/api/v1/users/', UserRoutes);
-
+app.use('/api/v1/academic-semesters', AcademicSemesterRoutes);
 // testing
 // app.get('/', async (req: Request, res: Response, next: NextFunction) => {
 //     throw new Error('Testing Error logger');
