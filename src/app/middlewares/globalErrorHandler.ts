@@ -5,7 +5,7 @@ import ApiError from '../../errors/ApiError';
 import handleValidationError from '../../errors/handleValidationError';
 import config from '../../config';
 import { errorlogger } from '../../shared/logger';
-import handleZodError from '../../errors/handleZOdError';
+import handleZodError from '../../errors/handleZodError';
 import { ZodError } from 'zod';
 
 const globalErrorHandler: ErrorRequestHandler = (
