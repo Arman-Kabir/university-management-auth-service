@@ -8,10 +8,10 @@ const createUser = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     // try {
     const { user } = req.body;
+
     const result = await UserService.createUser(user);
     // logger('hello');
 
-    next();
     // res.status(200).json({
     //   success: true,
     //   message: 'user created successfully',
@@ -29,6 +29,8 @@ const createUser = catchAsync(
       message: 'User Created Successfully',
       data: result,
     });
+
+    next();
   }
 );
 
