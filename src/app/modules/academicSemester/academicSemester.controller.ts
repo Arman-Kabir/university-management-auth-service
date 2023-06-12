@@ -42,11 +42,13 @@ const getAllSemesters = catchAsync(
     //   sortOrder:req.query.sortOrder
     // };
 
+    const filters = pick(req.query, ['searchTerm']);
     const paginationOptions = pick(req.query, paginationFields);
 
     console.log(paginationOptions);
 
     const result = await AcademicSemesterService.getAllSemesters(
+      filters,
       paginationOptions
     );
 
