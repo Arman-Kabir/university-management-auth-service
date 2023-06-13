@@ -13,6 +13,7 @@ router.post(
 );
 
 router.get('/:id', academicSemesterController.getSingleSemester);
+router.patch('/:id', academicSemesterController.updateSemester);
 
 router.get('/', academicSemesterController.getAllSemesters);
 
