@@ -6,12 +6,13 @@ import httpStatus from 'http-status';
 import { IAcademicSemester } from './academicSemester.interface';
 import pick from '../../../shared/pick';
 import { paginationFields } from '../../../constants/pagination';
+import { academicSemesterFilterableFileds } from './academicSemester.constant';
 
 const createSemester = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const { ...academicSemesterData } = req.body;
 
-    console.log('Aca Sem');
+    // console.log('Aca Sem');
     const result = await AcademicSemesterService.createSemester(
       academicSemesterData
     );
@@ -42,10 +43,13 @@ const getAllSemesters = catchAsync(
     //   sortOrder:req.query.sortOrder
     // };
 
-    const filters = pick(req.query, ['searchTerm']);
+    const filters = pick(req.query, academicSemesterFilterableFileds);
+
     const paginationOptions = pick(req.query, paginationFields);
 
-    console.log(paginationOptions);
+    console.log(filters);
+
+    // console.log(paginationOptions);
 
     const result = await AcademicSemesterService.getAllSemesters(
       filters,
