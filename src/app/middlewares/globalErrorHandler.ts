@@ -7,6 +7,7 @@ import config from '../../config';
 import { errorlogger } from '../../shared/logger';
 import handleZodError from '../../errors/handleZodError';
 import { ZodError } from 'zod';
+import handleCastError from '../../errors/handleCastError';
 
 const globalErrorHandler: ErrorRequestHandler = (
   // err,
@@ -38,6 +39,14 @@ const globalErrorHandler: ErrorRequestHandler = (
     errorMessages = simplifiedError.errorMessages;
   } else if (error instanceof ZodError) {
     const simplifiedError = handleZodError(error);
+    statusCode = simplifiedError.statusCode;
+    message = simplifiedError.message;
+    errorMessages = simplifiedError.errorMessages;
+  }
+  //castError in mod-14:10
+  else if (error?.name === 'CastError') {
+    // res.status(200).json({error})
+    const simplifiedError = handleCastError(error);
     statusCode = simplifiedError.statusCode;
     message = simplifiedError.message;
     errorMessages = simplifiedError.errorMessages;
