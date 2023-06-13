@@ -1,0 +1,19 @@
+{
+  statusCode: 400,
+  level: 'error',
+  label: 'PH',
+  timestamp: '2023-06-13T01:39:20.030Z'
+}
+{
+  stringValue: '"i"',
+  messageFormat: undefined,
+  kind: 'number',
+  value: 'i',
+  path: 'year',
+  reason: null,
+  valueType: 'string',
+  model: Model { AcademicSemester },
+  level: 'error',
+  label: 'PH',
+  timestamp: '2023-06-13T01:43:25.541Z'
+}
