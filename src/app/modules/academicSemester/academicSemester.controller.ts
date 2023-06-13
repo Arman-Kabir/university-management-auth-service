@@ -67,47 +67,56 @@ const getAllSemesters = catchAsync(
   }
 );
 
-const getSingleSemester = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
-    const id = req.params.id;
+const getSingleSemester = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
 
-    const result = await AcademicSemesterService.getSingleSemester(id);
+  const result = await AcademicSemesterService.getSingleSemester(id);
 
-    sendResponse<IAcademicSemester>(res, {
-      statusCode: httpStatus.OK,
-      success: true,
-      message: ' Semester retrieved Successfully',
-      data: result,
-    });
-    next();
-  }
-);
+  sendResponse<IAcademicSemester>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: ' Semester retrieved Successfully',
+    data: result,
+  });
+  // next();
+});
 
-const updateSemester = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
-    const id = req.params.id;
-    const updatedData = req.body;
+const updateSemester = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const updatedData = req.body;
 
-    const result = await AcademicSemesterService.updateSemester(
-      id,
-      updatedData
-    );
+  const result = await AcademicSemesterService.updateSemester(id, updatedData);
 
-    sendResponse<IAcademicSemester>(res, {
-      statusCode: httpStatus.OK,
-      success: true,
-      message: ' Semester updated Successfully',
-      data: result,
-    });
-    next();
-  }
-);
+  sendResponse<IAcademicSemester>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: ' Semester updated Successfully',
+    data: result,
+  });
+  // next();
+});
+
+const deleteSemester = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  // const updatedData = req.body;
+
+  const result = await AcademicSemesterService.deleteSemester(id);
+
+  sendResponse<IAcademicSemester>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: ' Semester deleted Successfully',
+    data: result,
+  });
+  // next();
+});
 
 export const academicSemesterController = {
   createSemester,
   getAllSemesters,
   getSingleSemester,
   updateSemester,
+  deleteSemester,
 };
 
 //code before optimization

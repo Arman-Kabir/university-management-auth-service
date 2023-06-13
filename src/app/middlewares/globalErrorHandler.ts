@@ -13,8 +13,8 @@ const globalErrorHandler: ErrorRequestHandler = (
   // err,
   error,
   req,
-  res,
-  next
+  res
+  // next
 ) => {
   // console.log(err);
   //   if (err instanceof Error) {
@@ -80,7 +80,7 @@ const globalErrorHandler: ErrorRequestHandler = (
     // stack: config.env !== 'production' ? error?.stack:undefined ,
   });
 
-  next();
+  // next();
 };
 
 export default globalErrorHandler;
